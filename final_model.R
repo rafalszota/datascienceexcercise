@@ -11,7 +11,7 @@ print("Generating predictions...")
 data <- read.csv(input_file_name, stringsAsFactors = F)
 model <- readRDS(model_file_name)
 
-data[1:304] <- (data[1:304])^(1/5)
+data[1:304] <- sign(data[1:304])* abs(data[1:304])^(1/5)
 predictions <- predict(model, data)
 write.csv(predictions, result_file_name)
 
